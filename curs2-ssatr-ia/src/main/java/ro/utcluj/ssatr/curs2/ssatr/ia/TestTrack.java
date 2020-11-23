@@ -5,22 +5,18 @@
  */
 package ro.utcluj.ssatr.curs2.ssatr.ia;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mihai.hulea
  */
 public class TestTrack {
-   Car[] cars = new Car[10]; // [null null null null ....]
+   ArrayList<Car> cars = new ArrayList<>();
    
    void addCar(Car c){
-       for(int i=0;i<cars.length;i++){
-           if(cars[i]==null){
-               cars[i] = c;
+               cars.add(c);
                System.out.println("New car added on test track.");
-               return;
-           }           
-       }
-       System.out.println("No empty position found on test track.");
    }
    
    //polimorfism - mecanimsul prin care in mod dinamic la rulare se determina tipul concert al obiectului
@@ -47,12 +43,17 @@ public class TestTrack {
     public static void main(String[] args) {
         TestTrack track1 = new TestTrack();
         
-        track1.addCar(new ElectricCar("Tesla 1", 0, "CJ01TES"));
-        track1.addCar(new ElectricCar("Tesla 2", 0, "CJ02TES"));
-        track1.addCar(new DieselCar("Tesla 2", 0, "CJ03TES"));
-        track1.addCar(new DieselCar("Tesla 2", 0, "CJ04TES"));
+        track1.addCar(new ElectricCar("Tesla 1", 0));
+        track1.addCar(new ElectricCar("Tesla 2", 0));
+        track1.addCar(new DieselCar("Tesla 2", 0));
+        track1.addCar(new DieselCar("Tesla 2", 0));
         
         track1.testAccelerate(4);
+        
+        Sensor sensor1 = new Sensor(1 , "Cluj");
+        Sensor sensor2 = new Sensor(2 , "Brasov");
+        
+        sensor1.equals(sensor2);
         
     }
    
